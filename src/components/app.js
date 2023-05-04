@@ -4,17 +4,17 @@ import Footer from "./Footer";
 import Note from "./Note";
 import notes from "../notes";
 
-function CreateNote(note){
-  return (
-   <Note title={note.title} content={note.content} />
-  );
-}
+// function CreateNote(note){
+//   return (
+//    <Note title={note.title} content={note.content} />
+//   );
+// }
 
 function App() {
   return (
     <div>
       <Header />
-      {notes.map(CreateNote)}
+      {notes.map(note=>(<Note title={note.title} content={note.content} />))}
       <Footer />
     </div>
   );
