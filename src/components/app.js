@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <Header />
-      {notes.map(note=>(<Note title={note.title} content={note.content} />))}
+      {notes.map(notes=>(<Note title={notes.title} content={notes.content} />))}
       <Footer />
     </div>
   );
