@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import AddIcon from '@mui/icons-material/Add';
+import { Fab } from "@mui/material";
+import Zoom from '@mui/material/Zoom';
+
 
 function CreateArea(props) {
+  const [clicked,setclicked]=useState(false);
   const [notes, setnotes] = useState([
     {
       title: "",
@@ -16,7 +21,9 @@ function CreateArea(props) {
         [name]: value
       };
     });
+    
   }
+  
   function submitnote(event) {
     props.additem(notes);
 
@@ -26,24 +33,33 @@ function CreateArea(props) {
       content: ""
     });
   }
+  function handleclick(){
+    setclicked(true)
+  }
 
   return (
     <div>
-      <form>
+      <form className="create-note" onClick={handleclick}>
         <input
           value={notes.title}
           onChange={handelchange}
           name="title"
           placeholder="Title"
+          onClick={handleclick}
+          hidden={!clicked}
+          
         />
         <textarea
+
           value={notes.content}
           onChange={handelchange}
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={clicked?3:1}
         />
-        <button onClick={submitnote}>Add</button>
+        <Zoom in={clicked}>
+        <Fab onClick={submitnote}> <AddIcon /></Fab>
+        </Zoom>
       </form>
     </div>
   );
