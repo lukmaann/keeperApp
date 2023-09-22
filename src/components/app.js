@@ -14,8 +14,8 @@ function App() {
   }
   function del(id) {
     setnotes((prev) => {
-      return prev.filter((value, index) => {
-        return id !== index;
+      return prev.filter((value, idx) => {
+        return id !== idx;
       });
     });
   }
